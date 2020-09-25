@@ -2,6 +2,10 @@ const path = require('path')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const TxtWebpackPlugin = require('./myPlugins/txt-webpack-plugin')
+const FileWebpackPlugin = require('./myPlugins/file-webpack-plugin')
+
 
 
 module.exports = {
@@ -16,11 +20,13 @@ module.exports = {
     compress: true,
     open: true,
     port: 8081,
+    hot: true,
     proxy: {
       "/api": {
         "target": "http://localhost:9000/"
       }
-    }
+    },
+    hotOnly: true,
   },
   module: {
     rules: [
@@ -48,6 +54,10 @@ module.exports = {
             limit: 1024 * 10,
           }
         }
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
       }
     ]
   },
@@ -64,7 +74,12 @@ module.exports = {
     new CleanWebpackPlugin(),
     new miniCssExtractPlugin({
       filename: 'css/[name]-[chunkhash:7].css',
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    // new TxtWebpackPlugin({
+    //   name: '赵日天'
+    // })
+    new FileWebpackPlugin(),
   ]
 
 }

@@ -1,13 +1,16 @@
-import './style/index.css'
-import './style/index.less'
-import pic from './img/pic.jpeg'
-import axios from 'axios'
-axios.get('/api/info').then(res => {
-  console.log(res)
-}).catch(e => {
-  console.log(e)
-})
+// plugin 就是webpack的功能扩展
+// 触发时机
+// 生成某种资源和时机
 
-let img = new Image()
-img.src = pic;
-document.body.appendChild(img)
+// const webpack = require('webpack')
+
+// const config = require('../webpack.config')
+
+// const compiler = webpack(config)
+// Object.keys(compiler.hooks).forEach((hookName) => {
+//   compiler.hooks[hookName].tap('xxx', () => {
+//     console.log('run ===>' + hookName)
+//   })
+// })
+
+// compiler.run()
