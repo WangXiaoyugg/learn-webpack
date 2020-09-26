@@ -1,16 +1,4 @@
-// plugin 就是webpack的功能扩展
-// 触发时机
-// 生成某种资源和时机
+import { str } from './a.js'
+import { str1 } from './b.js'
 
-// const webpack = require('webpack')
-
-// const config = require('../webpack.config')
-
-// const compiler = webpack(config)
-// Object.keys(compiler.hooks).forEach((hookName) => {
-//   compiler.hooks[hookName].tap('xxx', () => {
-//     console.log('run ===>' + hookName)
-//   })
-// })
-
-// compiler.run()
+console.log(`${str1}, hello ${str}`)
